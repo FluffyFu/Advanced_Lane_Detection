@@ -49,3 +49,4 @@ def calibrate_camera(path, nx, ny):
         objpoints, imgpoints, gray.shape[::-1], None, None)
 
     return mtx, dist
+
