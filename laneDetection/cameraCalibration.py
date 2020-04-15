@@ -15,7 +15,8 @@ def calibrate_camera(path, nx, ny):
     calibrate camera with the images contained in path.
 
     Args:
-        path(string): directory that contains calibration images.
+        path(string): directory that contains calibration images and
+        regex of the file name.
 
         nx(int): number of corners in each row.
 
@@ -28,12 +29,13 @@ def calibrate_camera(path, nx, ny):
 
     """
     images = glob.glob(path)
+    print(images)
 
     objpoints = []
     imgpoints = []
 
     objp = np.zeros((nx * ny, 3), np.float32)
-    objp[:,:2] = np.mgrid[0:nx + 1, 0:ny + 1].T.reshape(-1, 2)
+    objp[:,:2] = np.mgrid[0:nx, 0:ny].T.reshape(-1, 2)
 
     for frame in images:
         img = mpimg.imread(frame)
@@ -49,4 +51,3 @@ def calibrate_camera(path, nx, ny):
         objpoints, imgpoints, gray.shape[::-1], None, None)
 
     return mtx, dist
-
