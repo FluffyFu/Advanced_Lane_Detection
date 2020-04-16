@@ -5,7 +5,7 @@
 # description: unit test for cameraCalibration.py
 ###################################
 from laneDetection.cameraCalibration import calibrate_camera
-
+import numpy as np
 
 def test_calibrate_camera():
     cal_path = '../camera_cal/calibration*.jpg'
